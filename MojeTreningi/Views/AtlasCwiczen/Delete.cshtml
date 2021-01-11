@@ -1,0 +1,45 @@
+﻿@model MojeTreningi.Models.Cwiczenie
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h3>Na pewno chcesz usunąć to ćwiczenie?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PartiaCiala.Nazwa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PartiaCiala.Nazwa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nazwa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nazwa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Opis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Opis)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Usuń" class="btn btn-default" />
+            <p>@Html.ActionLink("Powrót", "Details", new { id = Model.ID })</p>
+        </div>
+    }
+</div>

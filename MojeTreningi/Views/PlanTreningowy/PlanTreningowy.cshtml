@@ -1,0 +1,128 @@
+﻿@model MojeTreningi.Models.DodajPlanTreningowyViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Plan Treningowy</h2>
+<hr />
+@if (User.Identity.Name == Model.PlanTreningowy.Profil.UserName)
+{
+    if (Model.Krok == 1)
+    {
+        @Html.Partial("CreateKrok1")
+    }
+    else
+    {
+        if (Model.Krok >= 2)
+        {
+            <button id="zestawBtn">Dodaj zestaw</button>
+            <div id="zestawForm">
+                @Html.Partial("CreateKrok2")
+            </div>
+        }
+        if (Model.Krok >= 3)
+        {
+            <button id="cwiczenieBtn">Dodaj ćwiczenie</button>
+            <div id="cwiczenieForm">
+                @Html.Partial("CreateKrok3")
+            </div>
+        }
+    }
+    <br />
+    <br />
+}
+
+
+@if (Model.Krok > 1)
+{
+    @Html.Partial("Details")
+}
+
+
+<!--
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+<hr />
+
+
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+@if (Model.PlanTreningowy != null)
+{
+    <div class="dodaj_plan_lista_plan">
+        <div class="dodaj_plan_lista_nazwa_planu">
+            <p>@Model.PlanTreningowy.Nazwa</p>
+        </div>
+
+        @if (Model.PlanTreningowy.Zestawy != null && Model.PlanTreningowy.Zestawy.Count > 0)
+        {
+            foreach (var zestaw in Model.PlanTreningowy.Zestawy)
+            {
+                <div class="dodaj_plan_lista_zestaw">
+                    <div class="dodaj_plan_lista_zestaw_nazwa_zestawu">
+                        <p>@zestaw.Nazwa</p>
+                    </div>
+                    @if (zestaw.CwiczeniaWPlanie != null && zestaw.CwiczeniaWPlanie.Count > 0)
+                    {
+                        foreach (var cwiczenie in zestaw.CwiczeniaWPlanie)
+                        {
+                            <div class="dodaj_plan_lista_cwiczenie">
+                                <p>@cwiczenie.Cwiczenie.Nazwa</p>
+                                <p>
+                                    Serie: @cwiczenie.Serie | Powtórzenia: @cwiczenie.Powtorzenia |
+                                    Przerwa pomiedzy seriam @cwiczenie.PrzerwaPomiedzySeriamiMinuty:@cwiczenie.PrzerwaPomiedzySeriamiSekundy |
+                                    Przerwa po cwiczeniu @cwiczenie.PrzerwaPoCwiczeniuMinuty:@cwiczenie.PrzerwaPoCwiczeniuSekundy |
+                                </p>
+                            </div>
+                        }
+
+                    }
+                </div>
+            }
+
+        }
+
+    </div>
+}-->
+
+<div>
+    @Html.ActionLink("Powrót", "Index")
+</div>
+<script>
+    $(document).ready(function () {
+        $("#zestawForm").hide();
+        $("#cwiczenieForm").hide();
+        var showZestaw = false;
+        var showCwiczenie = false;
+        $("#zestawBtn").click(function () {
+            if (showZestaw) {
+                showZestaw = !showZestaw;
+                $("#zestawForm").hide();
+            }
+            else if (!showZestaw) {
+                showZestaw = !showZestaw;
+                $("#zestawForm").show();
+            }
+        });
+        $("#cwiczenieBtn").click(function () {
+            if (showCwiczenie) {
+                showCwiczenie = !showCwiczenie;
+                $("#cwiczenieForm").hide();
+            }
+            else if (!showCwiczenie) {
+                showCwiczenie = !showCwiczenie;
+                $("#cwiczenieForm").show();
+            }
+        });
+    });
+</script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

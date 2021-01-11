@@ -1,0 +1,89 @@
+﻿@model MojeTreningi.Models.CwiczenieWPlanie
+
+@{
+    ViewBag.Title = "DeleteCwiczenie";
+}
+
+<h2>DeleteCwiczenie</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>CwiczenieWPlanie</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            Zestaw
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Zestaw.Nazwa)
+        </dd>
+
+        <dt>
+            Nazwa ćwiczenia
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cwiczenie.Nazwa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Serie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Serie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Powtorzenia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Powtorzenia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrzerwaPomiedzySeriamiMinuty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrzerwaPomiedzySeriamiMinuty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrzerwaPomiedzySeriamiSekundy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrzerwaPomiedzySeriamiSekundy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrzerwaPoCwiczeniuMinuty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrzerwaPoCwiczeniuMinuty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrzerwaPoCwiczeniuSekundy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrzerwaPoCwiczeniuSekundy)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

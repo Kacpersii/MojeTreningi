@@ -1,0 +1,124 @@
+﻿@model IEnumerable<MojeTreningi.Models.Pomiar>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Pomiary</h2>
+
+<p>
+    <button>@Html.ActionLink("Dodaj nowy pomiar", "Create")</button>
+</p>
+<div class="col-xs-12">
+    <div class="col-sm-6">
+        @foreach (var item in Model)
+        {
+            <table class="table table-striped">
+
+                <h4 style="font-weight: bold;">@Html.DisplayFor(modelItem => item.DataPomiaru)</h4>
+                @Html.ActionLink("Edytuj", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Usuń", "Delete", new { id = item.ID })
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.Waga)
+                    </td>
+                    <td class="col-xs-2">
+                        @Html.DisplayFor(modelItem => item.Waga)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.Wzrost)
+                    </td>
+                    <td class="col-xs-2">
+                        @Html.DisplayFor(modelItem => item.Wzrost)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.Kark)
+                    </td>
+                    <td class="col-xs-2">
+                        @Html.DisplayFor(modelItem => item.Kark)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.KlatkaPiersiowa)
+                    </td>
+                    <td class="col-xs-2">
+                        @Html.DisplayFor(modelItem => item.KlatkaPiersiowa)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.Talia)
+                    </td>
+                    <td class="col-xs-2">
+                        @Html.DisplayFor(modelItem => item.Talia)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.Pas)
+                    </td>
+                    <td class="col-xs-2">
+                        @Html.DisplayFor(modelItem => item.Pas)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.Biodro)
+                    </td>
+                    <td class="col-xs-2">
+                        @Html.DisplayFor(modelItem => item.Biodro)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.Ramie)
+                    </td>
+                    <td class="col-xs-2">
+                        @Html.DisplayFor(modelItem => item.Ramie)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.Przedramie)
+                    </td>
+                    <td class="col-xs-2">
+                        @Html.DisplayFor(modelItem => item.Przedramie)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.Udo)
+                    </td>
+                    <td class="col-xs-2">
+                        @Html.DisplayFor(modelItem => item.Udo)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.Łydka)
+                    </td>
+                    <td class="col-xs-2">
+                        @Html.DisplayFor(modelItem => item.Łydka)
+                    </td>
+                </tr>
+            </table>
+            if (!item.Zdjecie.IsEmpty())
+            {
+                <img src="~/Content/Zdjecia/@item.Zdjecie" width="70%" />
+                <br />
+                <br />
+            }
+            <br />
+        }
+
+    </div>
+    <div class="col-sm-6 text-center">
+        <img src="~/Content/Images/pomiary-img-m.jpg" class="col-xs-12"/>
+    </div>
+</div>
+

@@ -1,0 +1,39 @@
+﻿@model MojeTreningi.Models.Cwiczenie
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Cwiczenie</h2>
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            Partia Ciała
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PartiaCiala.Nazwa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nazwa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nazwa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Opis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Opis)
+        </dd>
+
+    </dl>
+</div>
+<p>@Html.ActionLink("Edytuj", "Edit", new { id = Model.ID }) |
+@Html.ActionLink("Usuń", "Delete", new { id = Model.ID })</p>
+<p>@Html.ActionLink("Powrót", "Index")</p>

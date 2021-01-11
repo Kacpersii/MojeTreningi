@@ -1,0 +1,18 @@
+﻿@model IEnumerable<MojeTreningi.Models.PartiaCiala>
+@{
+    ViewBag.Title = "AtlasCwiczen";
+}
+
+<h1>@Html.ActionLink("Pokaż wszystkie", "Index")</h1>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 border border-primary py-4 my-4">
+            <h3>
+                @Html.ActionLink(item.Nazwa, "Index", new { id = item.ID }, null)
+            </h3>
+        </div>
+    }
+</div>
+

@@ -1,0 +1,120 @@
+﻿@model MojeTreningi.Models.Pomiar
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Usuń</h2>
+
+<h3>Na pewno chcesz usunąć ten pomiar?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataPomiaru)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataPomiaru)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Waga)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Waga)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Wzrost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Wzrost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kark)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kark)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KlatkaPiersiowa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KlatkaPiersiowa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Talia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Talia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Biodro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Biodro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ramie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ramie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Przedramie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Przedramie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Udo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Udo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Łydka)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Łydka)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Usuń" class="btn btn-default" /> |
+            @Html.ActionLink("Powrót", "Index")
+        </div>
+    }
+</div>

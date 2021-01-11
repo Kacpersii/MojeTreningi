@@ -1,0 +1,92 @@
+﻿@model MojeTreningi.Models.PlanyTreningoweViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    .collapsible {
+        background-color: #777;
+        color: white;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+    }
+
+    .active, .collapsible:hover {
+        background-color: #555;
+    }
+
+    .active:hover {
+        background-color: #777;
+    }
+
+    .content {
+        padding: 0 18px;
+        display: block;
+    }
+</style>
+<h2>Plany treningowe</h2>
+
+@if (Request.IsAuthenticated)
+{
+    <p>
+        <button>@Html.ActionLink("Dodaj nowy plan treningowy", "PlanTreningowy")</button>
+    </p>
+}
+
+@if (Request.IsAuthenticated)
+{
+    <button type="button" class="collapsible active">Moje plany treningowe</button>
+    <div class="content">
+        <table class="table">
+            @foreach (var item in Model.Prywatne)
+            {
+                <tr>
+                    <td>
+                        i
+                    </td>
+                    <td>
+                        @Html.ActionLink(item.Nazwa, "PlanTreningowy", new { id = item.ID })
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+}
+<button type="button" class="collapsible active">Dostępne plany treningowe</button>
+<div class="content">
+    <table class="table">
+        @foreach (var item in Model.Publiczne)
+        {
+            <tr>
+                <td>
+                    i
+                </td>
+                <td>
+                    @Html.ActionLink(item.Nazwa, "PlanTreningowy", new { id = item.ID })
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+<script>
+    var coll = document.getElementsByClassName("collapsible");
+    $i = "asd";
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        });
+    }
+</script>

@@ -1,0 +1,64 @@
+﻿@model PagedList.IPagedList<MojeTreningi.Models.Cwiczenie>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Atlas ćwiczeń</h2>
+
+@if (Context.User.IsInRole("Admin"))
+{
+    <p>@Html.ActionLink("Dodaj nowe ćwiczenie", "Create")</p>
+}
+
+@using (Html.BeginForm())
+{
+    <p>
+        Wyszukaj: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th class="col-md-2">
+            @Html.ActionLink("Partia Ciala", "Index", new { sortOrder = ViewBag.PartiaSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th class="col-md-8">
+            @Html.ActionLink("Nazwa", "Index", new { sortOrder = ViewBag.NazwaSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+
+        @if (Context.User.IsInRole("Admin"))
+        {
+            <th class="col-md-2"></th>
+        }
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(item.PartiaCiala.Nazwa, "Index", new { id = item.PartiaCialaID })
+            </td>
+            <td>
+                @Html.ActionLink(item.Nazwa, "Details", new { id = item.ID })
+            </td>
+            @if (Context.User.IsInRole("Admin"))
+            {
+                <td>
+                    @Html.ActionLink("Edytuj", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Usuń", "Delete", new { id = item.ID })
+                </td>
+            }
+
+        </tr>
+    }
+
+</table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

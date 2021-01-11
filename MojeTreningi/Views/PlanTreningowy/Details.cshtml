@@ -1,0 +1,73 @@
+﻿@model MojeTreningi.Models.DodajPlanTreningowyViewModel
+
+
+<div class="dodaj_plan_lista_plan">
+    <div class="dodaj_plan_lista_nazwa_planu">
+        <p>
+            @Model.PlanTreningowy.Nazwa
+            @if (User.Identity.Name == Model.PlanTreningowy.Profil.UserName)
+            {
+                <span style="float: right">
+                    @Html.ActionLink("Usuń", "Delete", new { id = Model.PlanTreningowy.ID })
+                </span>
+                <span style="float: right">
+                    @Html.ActionLink("Edytuj", "Edit", new { id = Model.PlanTreningowy.ID }) |
+                </span>
+                <span style="clear: both"></span>
+            }
+        </p>
+    </div>
+
+    @if (Model.PlanTreningowy.Zestawy != null && Model.PlanTreningowy.Zestawy.Count > 0)
+    {
+        foreach (var zestaw in Model.PlanTreningowy.Zestawy)
+        {
+            <div class="dodaj_plan_lista_zestaw">
+                <div class="dodaj_plan_lista_zestaw_nazwa_zestawu">
+                    <p>
+                        @zestaw.Nazwa
+                        @if (User.Identity.Name == Model.PlanTreningowy.Profil.UserName)
+                        {
+                            <span style="float: right">
+                                @Html.ActionLink("Usuń", "DeleteZestaw", new { id = zestaw.ID })
+                            </span>
+                            <span style="float: right">
+                                @Html.ActionLink("Edytuj", "EditZestaw", new { id = zestaw.ID }) |
+                            </span>
+                            <span style="clear: both"></span>
+                        }
+                    </p>
+                </div>
+                @if (zestaw.CwiczeniaWPlanie != null && zestaw.CwiczeniaWPlanie.Count > 0)
+                {
+                    foreach (var cwiczenie in zestaw.CwiczeniaWPlanie)
+                    {
+                        <div class="dodaj_plan_lista_cwiczenie">
+                            <p>
+                                @cwiczenie.Cwiczenie.Nazwa
+                                @if (User.Identity.Name == Model.PlanTreningowy.Profil.UserName)
+                                {
+                                    <span style="float: right">
+                                        @Html.ActionLink("Usuń", "DeleteCwiczenie", new { id = cwiczenie.ID })
+                                    </span>
+                                    <span style="float: right">
+                                        @Html.ActionLink("Edytuj", "EditCwiczenie", new { id = cwiczenie.ID }) |
+                                    </span>
+                                    <span style="clear: both"></span>
+                                }
+                            </p>
+                            <p>
+                                Serie: @cwiczenie.Serie | Powtórzenia: @cwiczenie.Powtorzenia |
+                                Przerwa pomiedzy seriam @cwiczenie.PrzerwaPomiedzySeriamiMinuty:@cwiczenie.PrzerwaPomiedzySeriamiSekundy |
+                                Przerwa po cwiczeniu @cwiczenie.PrzerwaPoCwiczeniuMinuty:@cwiczenie.PrzerwaPoCwiczeniuSekundy |
+                            </p>
+                        </div>
+                    }
+
+                }
+            </div>
+        }
+
+    }
+
+</div>

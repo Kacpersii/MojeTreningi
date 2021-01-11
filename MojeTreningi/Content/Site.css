@@ -1,0 +1,48 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select{
+    max-width: 280px;
+}
+
+.dodaj_plan_lista_plan {
+    margin-top: 40px;
+}
+
+.dodaj_plan_lista_nazwa_planu {
+    background-color: #FFAF00;
+    padding: 10px;
+}
+
+.dodaj_plan_lista_zestaw {
+    padding: 10px;
+    margin: 0 50px;
+}
+
+.dodaj_plan_lista_zestaw_nazwa_zestawu {
+    background-color: #ffd800;
+    padding: 10px;
+}
+
+.dodaj_plan_lista_cwiczenie {
+    background-color: #FFFFD2;
+    margin: 5px;
+    padding: 10px;
+}
